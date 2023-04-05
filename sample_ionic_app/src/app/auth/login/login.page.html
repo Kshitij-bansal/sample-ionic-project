@@ -1,0 +1,80 @@
+<ion-content scrollY="false">
+  <ion-grid class="login-grid">
+    <ion-row class="login-row">
+      <ion-col class="login-column">
+        <ion-card class="login-card">
+          <!-- Fynn Care - Title -->
+          <ion-card-header class="ion-text-center">
+            <h1 class="login-title">Fynn&nbsp;<b>Companion</b></h1>
+          </ion-card-header>
+          <hr class="divider" />
+          <!-- Login Form -->
+          <ion-card-content>
+            <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+              <ion-row>
+                <ion-col>
+                  <!-- Login Form - Email Input -->
+                  <ion-label position="stacked">Email</ion-label>
+                  <ion-item fill="outline" mode="md">
+                    <ion-input
+                      type="text"
+                      formControlName="username"
+                      [clearOnEdit]="true"></ion-input>
+
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <!-- Login Form - Password Input -->
+                  <ion-label position="stacked">Password</ion-label>
+                  <ion-item fill="outline" mode="md">
+                    <ion-input
+                      [type]="passwordType"
+                      formControlName="password"
+                      [clearOnEdit]="true"></ion-input>
+
+                    <ion-icon
+                      item-end
+                      [name]="passwordIcon"
+                      (click)="hideShowPassword()"></ion-icon>
+
+
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+              <!-- Login Form - Forgot PW -->
+              <ion-row class="ion-justify-content-end">
+                <ion-col size="auto" class="ion-padding-bottom">
+                  <ion-button
+                    class="ion-no-padding"
+                    fill="clear"
+                    size="small"
+                    routerLink="/forgot-password">
+                    FORGOT PASSWORD?
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="ion-padding-vertical">
+                  <!-- Login Form - Login Button -->
+                  <ion-button expand="block" type="submit">LOGIN</ion-button>
+                </ion-col>
+              </ion-row>
+            </form>
+            <ion-row class="ion-padding-top">
+              <ion-col class="ion-text-center">
+                <ion-text>
+                  <p>
+                    <b>Questions? Contact &nbsp;</b>
+                    <a href="mailto:support@Fynn.io"><b>support@Fynn.io</b></a>
+                  </p>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

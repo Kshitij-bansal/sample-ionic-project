@@ -1,0 +1,56 @@
+
+.login-grid {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  padding: 0% 0% 0%;
+}
+
+.login-row {
+  flex-grow: 1;
+}
+
+.login-column {
+  padding: 0% 0% 0%;
+}
+
+.login-card {
+  background-color: var(--ion-color-primary-contrast);
+  width: 100%;
+  margin: 0%;
+  border-radius: 10px 10px 0px 0px;
+}
+// Container Component - End
+
+.login-title {
+  font-size: 30px;
+  margin-bottom: 0;
+}
+
+.divider {
+  border-top: 4px solid var(--ion-color-primary);
+  width: 184px;
+}
+
+// IONIC Overrides
+ion-item {
+  --highlight-height: 1px;
+  --highlight-color-focused: var(--ion-color-primary);
+  --highlight-color-valid: var(--ion-color-primary);
+}
+
+ion-content {
+  --background: url(/assets/images/FynnBackground.png) no-repeat center/cover
+  fixed;
+}
+
+ion-img{
+  width: 40%;
+  margin: 25% auto auto auto;
+
+}
+
+ion-label{
+  color: #000;
+  align-items: center;
+}
