@@ -24,3 +24,8 @@ debug-apk:
 		ionic capacitor sync
 		cd android
 		./gradlew assembleDebug
+
+
+
+# npx rimraf ./**/node_modules
+# npm cache clear --force
