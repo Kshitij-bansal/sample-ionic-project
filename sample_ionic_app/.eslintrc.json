@@ -6,6 +6,7 @@
       "files": ["*.ts"],
       "parserOptions": {
         "project": ["tsconfig.json"],
+        "tsconfigRootDir":"sample_ionic_app" ,
         "createDefaultProgram": true
       },
       "extends": [

@@ -1,23 +1,28 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { NavigationPath } from './constants/navigation_path';
 
 const routes: Routes = [
   {
-    path: 'splash',
-    loadChildren: () => import('./splash-screen/splash-screen.module').then( m => m.SplashScreenPageModule)
+    path: NavigationPath.SPLASH_SCREEN,
+    loadChildren: () =>
+      import('./screens/splash-screen/splash-screen.module').then(
+        (m) => m.SplashScreenPageModule
+      ),
   },
   {
-    path: 'login',
-    loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule)
+    path: NavigationPath.LOGIN_SCREEN,
+    loadChildren: () =>
+      import('./screens/auth/login/login.module').then(
+        (m) => m.LoginPageModule
+      ),
   },
-
-
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

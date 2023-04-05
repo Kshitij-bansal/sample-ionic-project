@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { images } from 'src/assets/images';
 
 @Component({
   selector: 'app-splash-screen',
@@ -7,14 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./splash-screen.page.scss'],
 })
 export class SplashScreenPage implements OnInit {
+  backgroundImage: string = images.spashBackground;
+  fynnLogoImage: string = images.fynnLogo;
+  fynnDogImage: string = images.fynnDog;
 
-  constructor(public router:Router) {
-
-    setTimeout(()=>{
+  constructor(public router: Router) {
+    setTimeout(() => {
       this.router.navigateByUrl('login');
-    },15000);
+    }, 3000);
   }
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 }
