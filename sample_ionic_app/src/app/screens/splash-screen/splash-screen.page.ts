@@ -8,7 +8,7 @@ import { images } from 'src/assets/images';
   styleUrls: ['./splash-screen.page.scss'],
 })
 export class SplashScreenPage implements OnInit {
-  backgroundImage: string = images.spashBackground;
+  backgroundImage: string = images.splashBackground;
   fynnLogoImage: string = images.fynnLogo;
   fynnDogImage: string = images.fynnDog;
 
