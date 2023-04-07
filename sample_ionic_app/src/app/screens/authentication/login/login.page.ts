@@ -59,13 +59,10 @@ export class LoginPage implements OnInit {
     this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
   }
 
-  // FORM GETTERS
-  // eslint-disable-next-line @typescript-eslint/member-ordering
   get username() {
     return this.loginForm.get('username');
   }
 
-  // eslint-disable-next-line @typescript-eslint/member-ordering
   get password() {
     return this.loginForm.get('password');
   }
