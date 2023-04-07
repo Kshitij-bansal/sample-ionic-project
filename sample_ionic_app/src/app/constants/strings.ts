@@ -5,4 +5,4 @@ export const LOGIN_USERNAME_ERROR2 = 'Enter valid email';
 export const FYNN = 'Fynn';
 export const COMPANION = 'Companion';
 export const SPLASH_SCREEN_TIMER = 3000;
-export const SPLASH_SCREEN_LABEL = "Master the art and science of successful senior living.";
+export const SPLASH_SCREEN_TEXT = "Master the art and science of successful senior living.";
