@@ -1,5 +1,5 @@
-export const Images = {
-  spashBackground: '/assets/images/fynnBackground.png',
-  fynnLogo: '/assets/images/fynnLogo.png',
-  fynnDog: '/assets/images/fynnDog.png',
+export const images = {
+  splashBackground: './fynnBackground.png',
+  fynnLogo: './fynnLogo.png',
+  fynnDog: './fynnDog.png',
 };

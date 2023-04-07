@@ -10,10 +10,9 @@ import { SPLASH_SCREEN_TIMER,SPLASH_SCREEN_LABEL } from 'src/app/constants/strin
   styleUrls: ['./splash-screen.page.scss'],
 })
 export class SplashScreenPage implements OnInit {
-  backgroundImage: string = Images.spashBackground;
-  fynnLogoImage: string = Images.fynnLogo;
-  fynnDogImage: string = Images.fynnDog;
-  splashScreenLabel :string = SPLASH_SCREEN_LABEL;
+  backgroundImage: string = images.splashBackground;
+  fynnLogoImage: string = images.fynnLogo;
+  fynnDogImage: string = images.fynnDog;
 
   constructor(public router: Router) {
     setTimeout(() => {
