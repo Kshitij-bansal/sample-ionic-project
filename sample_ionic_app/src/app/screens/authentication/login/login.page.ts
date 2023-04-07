@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { Store } from '@ngrx/store';
+import { FYNN ,COMPANION} from 'src/app/constants/strings';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +9,8 @@ import { Store } from '@ngrx/store';
 
 })
 export class LoginPage implements OnInit {
-
+  fynn: string = FYNN;
+  companion:string = COMPANION;
   state = 'in';
   loginForm: FormGroup ;
    emailRegex =

@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: NavigationPath.LOGIN_SCREEN,
     loadChildren: () =>
-      import('./screens/auth/login/login.module').then(
+      import('./screens/authentication/login/login.module').then(
         (m) => m.LoginPageModule
       ),
   },

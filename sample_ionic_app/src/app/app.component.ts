@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
-
+import { NavigationPath } from './constants/navigation_path';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -17,7 +17,8 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.router.navigateByUrl('splash');
+      console.log(NavigationPath.SPLASH_SCREEN);
+      this.router.navigateByUrl(NavigationPath.SPLASH_SCREEN);
     });
   }
 }
