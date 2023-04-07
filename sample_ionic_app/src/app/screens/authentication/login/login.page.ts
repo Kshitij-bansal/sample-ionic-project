@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpService } from 'src/app/components/services/http.service';
 import { FYNN ,COMPANION} from 'src/app/constants/strings';
 
 @Component({
@@ -24,6 +25,7 @@ export class LoginPage implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private httpService : HttpService
   //  private store: Store,
 
   ) {}
@@ -44,14 +46,15 @@ export class LoginPage implements OnInit {
 
   submitLogin() {
     const { username, password } = this.loginForm.value;
-    if (this.loginForm.valid && this.loginForm.valueChanges) {
+    //if (this.loginForm.valid && this.loginForm.valueChanges) {
    // this.authFacade.login(username, password);
      console.log('Valid');
+     this.httpService.postData('/authenticate',{username,password}).subscribe(result =>{
+      console.log(result);
+     });
+     console.log("done");
       this.loginForm.reset();
-    } else {
-      console.log('In-Valid');
-     // this.store.dispatch(AuthActions.loginFailure({ error: true }));
-    }
+
   }
 
   hideShowPassword() {
