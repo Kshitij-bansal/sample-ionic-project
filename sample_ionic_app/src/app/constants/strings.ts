@@ -6,3 +6,4 @@ export const FYNN = 'Fynn';
 export const COMPANION = 'Companion';
 export const SPLASH_SCREEN_TIMER = 3000;
 export const SPLASH_SCREEN_TEXT = "Master the art and science of successful senior living.";
+export const JWT_TOKEN_TYPE = 'Bearer';
