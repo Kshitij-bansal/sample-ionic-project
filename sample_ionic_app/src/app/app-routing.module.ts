@@ -17,6 +17,8 @@ const routes: Routes = [
         (m) => m.LoginPageModule
       ),
   },
+  {path: '', redirectTo: NavigationPath.SPLASH_SCREEN, pathMatch:'full'},
+  {path: '**', redirectTo: NavigationPath.SPLASH_SCREEN, pathMatch:'full'}
 ];
 
 @NgModule({
