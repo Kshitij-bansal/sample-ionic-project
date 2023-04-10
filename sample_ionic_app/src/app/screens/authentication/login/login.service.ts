@@ -10,6 +10,7 @@ export class LoginService {
   constructor(private httpService: HttpService) { }
 
   login(authData: AuthenticateRequestData) {
+    console.log(authData);
     return this.httpService.postData('/authenticate',authData);
   }
 

@@ -73,7 +73,7 @@ export class LoginPage implements OnInit {
 
   login(): void {
     const data: AuthenticateRequestData = this.loginForm.value;
-    this.store.dispatch(allLoginScreenActions.loginFlowInitiated(data));
+    this.store.dispatch(allLoginScreenActions.loginFlowInitiated({authData: data}));
   }
 
   logout(): void {
