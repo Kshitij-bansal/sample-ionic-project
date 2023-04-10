@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/components/services/http.service';
 import { FYNN ,COMPANION} from 'src/app/constants/strings';
+import {Store} from "@ngrx/store";
+import {allLoginScreenActions} from "../../../NgRx_state/user";
+import {AuthenticateRequestData} from "../../../components/models/request/authenticateRequest.model";
 
 @Component({
   selector: 'app-login',
@@ -25,8 +28,8 @@ export class LoginPage implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private httpService : HttpService
-  //  private store: Store,
+    private httpService : HttpService,
+    private store: Store,
 
   ) {}
 
@@ -46,8 +49,6 @@ export class LoginPage implements OnInit {
 
   submitLogin() {
     const { username, password } = this.loginForm.value;
-    //if (this.loginForm.valid && this.loginForm.valueChanges) {
-   // this.authFacade.login(username, password);
      console.log('Valid');
      this.httpService.postData('/authenticate',{username,password}).subscribe(result =>{
       console.log(result);
@@ -68,5 +69,14 @@ export class LoginPage implements OnInit {
 
   get password() {
     return this.loginForm.get('password');
+  }
+
+  login(): void {
+    const data: AuthenticateRequestData = this.loginForm.value;
+    this.store.dispatch(allLoginScreenActions.loginFlowInitiated(data));
+  }
+
+  logout(): void {
+    this.store.dispatch(allLoginScreenActions.logoutFlowInitiated());
   }
 }
