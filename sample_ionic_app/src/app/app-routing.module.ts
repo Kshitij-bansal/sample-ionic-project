@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NavigationPath } from './constants/navigation_path';
+import {AuthGuard} from "./screens/authentication/guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
         (m) => m.LoginPageModule
       ),
   },
-  {path: '', redirectTo: NavigationPath.SPLASH_SCREEN, pathMatch:'full'},
+  {path: '', redirectTo: NavigationPath.SPLASH_SCREEN, pathMatch:'full',},
   {path: '**', redirectTo: NavigationPath.SPLASH_SCREEN, pathMatch:'full'}
 ];
 
