@@ -18,10 +18,14 @@ export class UserEffects {
       this.actions.pipe(
         ofType(UserActions.allLoginScreenActions.loginFlowInitiated.type),
         switchMap((action) =>
-          this.loginService.login(action.userDetails).pipe(
-            map(() => UserActions.allLoginScreenActions.loginSucceeded()),
-            catchError((error) => of(UserActions.allLoginScreenActions.loginFailed) )
-          )
+          {
+            console.log(action);
+
+            return this.loginService.login(action.authData).pipe(
+              map(() => UserActions.allLoginScreenActions.loginSucceeded()),
+              catchError((error) => of(UserActions.allLoginScreenActions.loginFailed) )
+            )
+          }
         )
       ),
     { dispatch: false }

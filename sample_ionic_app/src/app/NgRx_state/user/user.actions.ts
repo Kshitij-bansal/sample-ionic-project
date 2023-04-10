@@ -4,7 +4,7 @@ import {AuthenticateData} from "../../components/models/response/authenticate.mo
 
 
 export const allLoginScreenActions = {
-  loginFlowInitiated: createAction("[LoginScreen] Login Flow Initiated", props<AuthenticateRequestData>()),
+  loginFlowInitiated: createAction("[LoginScreen] Login Flow Initiated", props<{ authData: AuthenticateRequestData }>()),
   loginSucceeded: createAction('[LoginScreen] Login is succeeded'),
   loginFailed: createAction('[LoginScreen] Login is failed'),
   logoutFlowInitiated: createAction("[LoginScreen] Logout Flow Initiated"),
