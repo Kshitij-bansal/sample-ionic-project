@@ -6,9 +6,9 @@ import * as UserActions from "./user.actions";
 
 const userReducer = createReducer(
   initialState,
-  on(UserActions.userChanged, (state, { userDetails: authData }) => ({
+  on (UserActions.allLoginScreenActions.loginSucceeded, (state, { userDetails: authData }) => ({
     ...state,
-    authData: authData,
+    userDetails: authData,
   }))
 );
 

@@ -22,7 +22,10 @@ export class UserEffects {
             console.log(action);
 
             return this.loginService.login(action.authData).pipe(
-              map(() => UserActions.allLoginScreenActions.loginSucceeded()),
+              map((userdata) => {
+                console.log("res", userdata);
+                return UserActions.allLoginScreenActions.loginSucceeded(userdata);
+              }),
               catchError((error) => of(UserActions.allLoginScreenActions.loginFailed) )
             )
           }
