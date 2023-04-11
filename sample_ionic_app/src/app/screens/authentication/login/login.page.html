@@ -19,8 +19,8 @@
                     <ion-input
                       type="text"
                       formControlName="username"
-                      [clearOnEdit]="true"></ion-input>
-
+                      [clearOnEdit]="true"
+                    ></ion-input>
                   </ion-item>
                 </ion-col>
               </ion-row>
@@ -32,14 +32,14 @@
                     <ion-input
                       [type]="passwordType"
                       formControlName="password"
-                      [clearOnEdit]="true"></ion-input>
+                      [clearOnEdit]="true"
+                    ></ion-input>
 
                     <ion-icon
                       item-end
                       [name]="passwordIcon"
-                      (click)="hideShowPassword()"></ion-icon>
-
-
+                      (click)="hideShowPassword()"
+                    ></ion-icon>
                   </ion-item>
                 </ion-col>
               </ion-row>
@@ -50,7 +50,8 @@
                     class="ion-no-padding"
                     fill="clear"
                     size="small"
-                    routerLink="/forgot-password">
+                    routerLink="/forgot-password"
+                  >
                     FORGOT PASSWORD?
                   </ion-button>
                 </ion-col>
@@ -62,6 +63,7 @@
                 </ion-col>
               </ion-row>
             </form>
+            <div *ngIf="isLoading"><ion-spinner></ion-spinner></div>
             <ion-row class="ion-padding-top">
               <ion-col class="ion-text-center">
                 <ion-text>
