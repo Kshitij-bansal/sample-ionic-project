@@ -15,10 +15,16 @@ import {metaReducers, reducers} from "./NgRx_state";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }), StoreModule.forRoot(reducers, {
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    StoreDevtoolsModule.instrument(),
+    StoreModule.forRoot(reducers,
+      {
     metaReducers
-  }),
-    EffectsModule.forRoot([ UserEffects]), HttpClientModule,],
+    }),
+    EffectsModule.forRoot([ UserEffects]), HttpClientModule, StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },],
   bootstrap: [AppComponent],
 })

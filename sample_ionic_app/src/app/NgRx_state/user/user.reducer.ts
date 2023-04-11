@@ -4,26 +4,16 @@ import * as UserActions from './user.actions';
 
 const userReducer = createReducer(
   initialState,
-  on(
-    UserActions.allLoginScreenActions.loginSucceeded,
-    (state, { userDetails: authData }) => ({
-      ...state,
-      userDetails: authData,
-    })
-  )
+  on (UserActions.allLoginScreenActions.loginSucceeded, (state, { userDetails: authData }) => {
+    console.log("authdata", authData);
+    return ({
+    ...state,
+    userDetails: authData,
+    isLoading: true
+  })})
 );
 
-const initiateLogin = createReducer(
-  initialState,
-  on(
-    UserActions.allLoginScreenActions.loginFlowInitiated,
-    (state, { isLoading: boolean }) => ({
-      ...state,
-      isLoading: true,
-    })
-  )
-);
+
 export function reducer(state: UserState | undefined, action: Action) {
-  // return userReducer(state, action);
-  return initiateLogin(state, action);
+  return userReducer(state, action);
 }

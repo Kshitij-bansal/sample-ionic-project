@@ -4,13 +4,15 @@ import {LoginService} from "../../screens/authentication/login/login.service";
 
 import * as UserActions from "./user.actions";
 import {catchError, map, of, switchMap, tap} from "rxjs";
+import {Store} from "@ngrx/store";
 
 
 @Injectable()
 export class UserEffects {
   constructor(
     private actions: Actions<any>,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private store: Store,
   ) {}
 
   login = createEffect(
@@ -24,7 +26,7 @@ export class UserEffects {
             return this.loginService.login(action.authData).pipe(
               map((userdata) => {
                 console.log("res", userdata);
-                return UserActions.allLoginScreenActions.loginSucceeded(userdata);
+                 this.store.dispatch(UserActions.allLoginScreenActions.loginSucceeded(userdata));
               }),
               catchError((error) => of(UserActions.allLoginScreenActions.loginFailed) )
             )
