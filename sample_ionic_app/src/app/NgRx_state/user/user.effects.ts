@@ -21,19 +21,17 @@ export class UserEffects {
         ofType(UserActions.allLoginScreenActions.loginFlowInitiated.type),
         switchMap((action) =>
           {
-            console.log(action);
 
             return this.loginService.login(action.authData).pipe(
               map((userdata) => {
-                console.log("res", userdata);
-                 this.store.dispatch(UserActions.allLoginScreenActions.loginSucceeded(userdata));
+                return UserActions.allLoginScreenActions.loginSucceeded({ userDetails: userdata });
               }),
               catchError((error) => of(UserActions.allLoginScreenActions.loginFailed) )
             )
           }
         )
       ),
-    { dispatch: false }
+    { dispatch: true }
   );
 
   logout = createEffect(
