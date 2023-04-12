@@ -1,36 +1,23 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {LoginService} from "../../screens/authentication/login/login.service";
+import {Network, NetworkStatusChangeCallback} from '@capacitor/network';
 
 import * as UserActions from "./user.actions";
-import {catchError, map, of, switchMap, tap} from "rxjs";
+import {catchError, from, fromEvent, map, of, switchMap, tap} from "rxjs";
 import {Store} from "@ngrx/store";
 
 
 @Injectable()
-export class UserEffects {
+export class NetworkEffects {
   constructor(
     private actions: Actions<any>,
-    private loginService: LoginService,
+    // private loginService: LoginService,
     private store: Store,
   ) {}
 
-  login = createEffect(
+  detectNetwork = createEffect(
     () =>
-      this.actions.pipe(
-        ofType(UserActions.allLoginScreenActions.loginFlowInitiated.type),
-        switchMap((action) =>
-          {
 
-            return this.loginService.login(action.authData).pipe(
-              map((userdata) => {
-                return UserActions.allLoginScreenActions.loginSucceeded({ userDetails: userdata });
-              }),
-              catchError((error) => of(UserActions.allLoginScreenActions.loginFailed) )
-            )
-          }
-        )
-      ),
     { dispatch: true }
   );
 

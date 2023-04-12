@@ -5,6 +5,7 @@ import * as UserReducer from "./user/user.reducer";
 
 export const reducers: ActionReducerMap<State> = {
 
+  app: AppReducer.reducer,
   user: UserReducer.reducer,
 };
 
