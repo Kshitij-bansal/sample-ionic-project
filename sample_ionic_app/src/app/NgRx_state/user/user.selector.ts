@@ -1,7 +1,13 @@
-import {createFeatureSelector, createSelector} from "@ngrx/store";
-import {UserState} from "./user.state";
+import { State, createFeatureSelector, createSelector } from '@ngrx/store';
+import { UserState } from './user.state';
 
-export const selectUser = createFeatureSelector<UserState>("user");
+export const selectUser = createFeatureSelector<UserState>('user');
+export const isLoading = createFeatureSelector<UserState>('user');
+
+export const selectIsLoading = createSelector(
+  isLoading,
+  (state: UserState) => state.isLoading
+);
 
 export const selectUserDetails = createSelector(
   selectUser,
@@ -15,7 +21,7 @@ export const selectIsLoggedIn = createSelector(
 
 // export const selectUserRoles = createSelector(
 //   selectUserDetails,
-  // (userDetails) => userDetails[`${authentication.roles}/roles`]
+// (userDetails) => userDetails[`${authentication.roles}/roles`]
 // );
 
 // export const selectIsAdmin = createSelector(selectUserRoles, (userRoles) =>

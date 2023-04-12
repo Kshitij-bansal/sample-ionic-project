@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import {
   UserState,
   allLoginScreenActions,
+  selectIsLoading,
   selectUserDetails,
 } from '../../../NgRx_state/user';
 import { AuthenticateRequestData } from '../../../components/models/request/authenticateRequest.model';
@@ -18,7 +19,7 @@ import { AuthenticateRequestData } from '../../../components/models/request/auth
 export class LoginPage implements OnInit {
   fynn: string = FYNN;
   companion: string = COMPANION;
-  isLoading: boolean;
+  isLoading: boolean = false;
   state = 'in';
   loginForm: FormGroup;
   emailRegex = '^[_a-z0-9-]+(.[_a-z0-9-]+)*@(.[a-z0-9-]*)[.](.[a-z]+)$';
@@ -36,6 +37,10 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     console.log('isLoading', this.isLoading);
+    this.store.select(selectIsLoading).subscribe((res: boolean) => {
+      this.isLoading = res;
+      console.log('res', this.isLoading);
+    });
     this.state = 'in';
     this.loginForm = this.fb.group({
       username: [
@@ -90,11 +95,6 @@ export class LoginPage implements OnInit {
         isLoading: this.isLoading,
       })
     );
-    console.log('NG on login called');
-    this.store.select(selectUserDetails).subscribe((res: any) => {
-      console.log(selectUserDetails, 'DATA ON LOGIN');
-      this.isLoading = res.isLoading;
-    });
   }
 
   logout(): void {
