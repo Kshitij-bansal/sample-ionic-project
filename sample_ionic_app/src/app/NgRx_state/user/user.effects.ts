@@ -15,24 +15,26 @@ export class UserEffects {
     private store: Store,
   ) {}
 
-  login = createEffect(
-    () =>
-      this.actions.pipe(
-        ofType(UserActions.allLoginScreenActions.loginFlowInitiated.type),
-        switchMap((action) =>
-          {
 
-            return this.loginService.login(action.authData).pipe(
-              map((userdata) => {
-                return UserActions.allLoginScreenActions.loginSucceeded({ userDetails: userdata });
-              }),
-              catchError((error) => of(UserActions.allLoginScreenActions.loginFailed) )
-            )
-          }
-        )
-      ),
-    { dispatch: true }
-  );
+
+login = createEffect(
+  () =>
+    this.actions.pipe(
+      ofType(UserActions.allLoginScreenActions.loginFlowInitiated.type),
+      switchMap((action) =>
+        {
+
+          return this.loginService.login(action.authData).pipe(
+            map((userdata) => {
+              return UserActions.allLoginScreenActions.loginSucceeded({ userDetails: userdata });
+            }),
+            catchError((error) => of (UserActions.allLoginScreenActions.loginFailed) )
+          )
+        }
+      )
+    ),
+  { dispatch: true }
+);
 
   logout = createEffect(
     () =>
