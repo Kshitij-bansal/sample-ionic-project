@@ -2,6 +2,6 @@ import {UserState} from "./user";
 
 export interface State {
 
-  // app: AppState;
+  app: AppState;
   user: UserState;
 }
