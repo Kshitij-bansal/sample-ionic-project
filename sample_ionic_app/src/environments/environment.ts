@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: 'https://dev.fynn.io/api',
+  apiURL: 'https://dev.fynn.io/api/',
 };
 
 /*

@@ -1,16 +1,46 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+  HttpParams,
+} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { selectUserDetails } from 'src/app/NgRx_state/user';
+
+export const Method = {
+  authentication: 'authenticate',
+};
 @Injectable({
   providedIn: 'root',
 })
 export class HttpService {
+  store: any;
   constructor(private http: HttpClient) {}
+
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    if (error.status === 401) {
+      console.error('Please log in');
+    } else if (error.status === 500) {
+      console.error('internal server error');
+    } else {
+      console.error('unknown error');
+    }
+    return throwError(error.error);
+  }
 
   getAPIUrl(endpoint: string | undefined) {
     let url = environment.apiURL;
-    return url+ endpoint;
+    return url + endpoint;
+  }
+
+  getHeader() {
+    let header = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    let options = { headers: header };
+    return options;
   }
 
   getRequest(endpoint: string, requestParams?: any, pathVarible?: string) {
@@ -35,9 +65,15 @@ export class HttpService {
   }
 
   postData(endpoint: string, data: any): Observable<any> {
-    console.log(endpoint);
-    let url = this.getAPIUrl(endpoint);
-    console.log(url);
-    return this.http.post<any>(url,data);
+    let response:any;
+
+    try {
+      let url = this.getAPIUrl(endpoint);
+      let options = this.getHeader();
+      response= this.http.post<any>(url, data, options);
+    } catch (error) {
+      response=error;
+    }
+    return response;
   }
 }
