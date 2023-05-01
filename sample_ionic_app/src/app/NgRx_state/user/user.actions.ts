@@ -1,19 +1,25 @@
-import { createAction, props } from '@ngrx/store';
-import { AuthenticateRequestData } from '../../components/models/request/authenticateRequest.model';
-import { AuthenticateData } from '../../components/models/response/authenticate.model';
+import {createAction, createActionGroup, emptyProps, props} from '@ngrx/store';
+import {AuthenticateRequestData} from '../../components/models/request/authenticateRequest.model';
+import {AuthenticateData} from '../../components/models/response/authenticate.model';
 
-export const allLoginScreenActions = {
-  loginFlowInitiated: createAction(
-    '[LoginScreen] Login Flow Initiated',
-    props<{ authData: AuthenticateRequestData; isLoading: boolean }>()
-  ),
-  loginSucceeded: createAction(
-    '[LoginScreen] Login is succeeded',
-    props<{ userDetails: AuthenticateData }>()
-  ),
-  loginFailed: createAction('[LoginScreen] Login is failed'),
-  logoutFlowInitiated: createAction('[LoginScreen] Logout Flow Initiated'),
-};
+
+export const LoginActions = createActionGroup({
+  source: '[Login Screen]',
+  events: {
+    'Login Flow Initiated': props<{ authData: AuthenticateRequestData; isLoading: boolean }>(),
+    'Login Succeeded': props<{ userDetails: AuthenticateData }>(),
+    'Login Failed': emptyProps(),
+  }
+});
+
+export const LogoutActions = createActionGroup({
+  source: '[Logout Button]',
+  events: {
+    'Logout Flow Initiated': emptyProps(),
+    'Logout Succeeded': emptyProps(),
+    'Logout Failed': emptyProps(),
+  }
+});
 
 export const userChanged = createAction(
   '[Auth] User Changed',

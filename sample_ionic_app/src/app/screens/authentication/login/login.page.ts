@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpService } from 'src/app/components/services/http.service';
-import { FYNN, COMPANION } from 'src/app/constants/strings';
-import { Store } from '@ngrx/store';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {HttpService} from 'src/app/components/services/http.service';
+import {FYNN, COMPANION} from 'src/app/constants/strings';
+import {Store} from '@ngrx/store';
 import {
-  UserState,
-  allLoginScreenActions,
   selectIsLoading,
-  selectUserDetails,
+  selectUserDetails, LoginActions, LogoutActions,
 } from '../../../NgRx_state/user';
-import { AuthenticateRequestData } from '../../../components/models/request/authenticateRequest.model';
+import {AuthenticateRequestData} from '../../../components/models/request/authenticateRequest.model';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +31,8 @@ export class LoginPage implements OnInit {
     private fb: FormBuilder,
     private httpService: HttpService,
     private store: Store
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     console.log('isLoading', this.isLoading);
@@ -90,7 +89,7 @@ export class LoginPage implements OnInit {
   login(): void {
     const data: AuthenticateRequestData = this.loginForm.value;
     this.store.dispatch(
-      allLoginScreenActions.loginFlowInitiated({
+      LoginActions.loginFlowInitiated({
         authData: data,
         isLoading: this.isLoading,
       })
@@ -98,6 +97,6 @@ export class LoginPage implements OnInit {
   }
 
   logout(): void {
-    this.store.dispatch(allLoginScreenActions.logoutFlowInitiated());
+    this.store.dispatch(LogoutActions.logoutFlowInitiated());
   }
 }

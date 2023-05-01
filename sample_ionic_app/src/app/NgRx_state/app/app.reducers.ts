@@ -1,12 +1,13 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import {AppState, initialState} from "./app.state";
 import * as AppActions from './app.actions';
+import {allNetworkActions} from "./app.actions";
 
 
 const appReducer = createReducer(
   initialState,
   on(
-    AppActions.allNetworkActions.networkDisconnected,
+    allNetworkActions.NetworkDisconnected,
     (state,) => {
       return {
         ...state,
@@ -15,7 +16,7 @@ const appReducer = createReducer(
     }
   ),
   on(
-    AppActions.allNetworkActions.NetworkReconnected,
+    allNetworkActions.NetworkReconnected,
     (state,) => {
       return {
         ...state,

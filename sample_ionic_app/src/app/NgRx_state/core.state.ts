@@ -1,4 +1,5 @@
 import {UserState} from "./user";
+import {AppState} from "./app";
 
 export interface State {
 

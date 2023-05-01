@@ -18,8 +18,16 @@ const routes: Routes = [
         (m) => m.LoginPageModule
       ),
   },
+
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./screens/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+
   {path: '', redirectTo: NavigationPath.SPLASH_SCREEN, pathMatch:'full',},
-  {path: '**', redirectTo: NavigationPath.SPLASH_SCREEN, pathMatch:'full'}
+  {path: '**', redirectTo: NavigationPath.SPLASH_SCREEN, pathMatch:'full'},
+
+
 ];
 
 @NgModule({

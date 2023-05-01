@@ -2,7 +2,7 @@ import {createAction} from "@ngrx/store";
 
 
 export const allNetworkActions = {
-  networkStatusChanged: createAction('[Network] Network status changed'),
+  NetworkStatusChanged: createAction('[Network] Network status changed'),
 
   NetworkDisconnected: createAction(
     '[Network] Network connection disconnected'
